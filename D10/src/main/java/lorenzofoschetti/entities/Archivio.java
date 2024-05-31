@@ -6,11 +6,13 @@ import java.util.Objects;
 
 public class Archivio {
     List<Catalogo> listaCataloghi;
+    List<Libro> listaLibri;
 
 
-    public Archivio(List<Catalogo> listaCataloghi) {
+    public Archivio(List<Catalogo> listaCataloghi, List<Libro> listaLibri) {
 
         this.listaCataloghi = new ArrayList<>();
+        this.listaLibri = new ArrayList<>();
     }
 
 
@@ -20,6 +22,14 @@ public class Archivio {
 
     public void setListaCataloghi(List<Catalogo> listaCataloghi) {
         this.listaCataloghi = listaCataloghi;
+    }
+
+    public List<Libro> getListaLibri() {
+        return listaLibri;
+    }
+
+    public void setListaLibri(List<Libro> listaLibri) {
+        this.listaLibri = listaLibri;
     }
 
     @Override
@@ -68,6 +78,41 @@ public class Archivio {
             } else {
 
                 listaIbsn2.forEach(prodotto -> System.out.println(prodotto.getTitolo()));
+            }
+        }
+    }
+
+    //ricerca per anno di pubblicazione
+    public void ricercaProdottoAnno(int dataDiPubblicazione) {
+        if (this.getListaCataloghi().isEmpty()) {
+            System.out.println("Non abbiamo trovato nulla per questo anno");
+        } else {
+            List<Catalogo> listaAnno = this.getListaCataloghi().stream()
+                    .filter(prodotto -> Objects.equals(prodotto.getDataPubblicazione(), dataDiPubblicazione))
+                    .toList();
+
+            if (listaAnno.isEmpty()) {
+                System.out.println("Nessun elemento trovato per questo anno");
+            } else {
+                listaAnno.forEach(prodotto -> System.out.println(prodotto.getTitolo()));
+            }
+        }
+    }
+
+
+    //ricerca per autore
+    public void ricercaProdottoAutore(String autore) {
+        if (this.getListaLibri().isEmpty()) {
+            System.out.println("Non abbiamo trovato nessun libro per questo autore");
+        } else {
+            List<Libro> listaAutore = this.getListaLibri().stream()
+                    .filter(prodotto -> Objects.equals(prodotto.getAutore(), autore))
+                    .toList();
+
+            if (listaAutore.isEmpty()) {
+                System.out.println("Nessun libro trovato con questo autore");
+            } else {
+                listaAutore.forEach(prodotto -> System.out.println(prodotto.getTitolo()));
             }
         }
     }
