@@ -1,16 +1,14 @@
 package lorenzofoschetti.entities;
 
-import java.util.Date;
-
 public abstract class Catalogo {
     //attributi
-    int codiceibsn;
+    String codiceibsn;
     String titolo;
-    Date dataPubblicazione;
+    int dataPubblicazione;
     int pagine;
 
     //costruttore
-    public Catalogo(int codiceibsn, String titolo, Date dataPubblicazione, int pagine) {
+    public Catalogo(String codiceibsn, String titolo, int dataPubblicazione, int pagine) {
         this.codiceibsn = codiceibsn;
         this.titolo = titolo;
         this.dataPubblicazione = dataPubblicazione;
@@ -20,11 +18,11 @@ public abstract class Catalogo {
     }
 
     //getter e setter
-    public int getCodiceibsn() {
+    public String getCodiceibsn() {
         return codiceibsn;
     }
 
-    public void setCodiceibsn(int codiceibsn) {
+    public void setCodiceibsn(String codiceibsn) {
         this.codiceibsn = codiceibsn;
     }
 
@@ -36,11 +34,11 @@ public abstract class Catalogo {
         this.titolo = titolo;
     }
 
-    public Date getDataPubblicazione() {
+    public int getDataPubblicazione() {
         return dataPubblicazione;
     }
 
-    public void setDataPubblicazione(Date dataPubblicazione) {
+    public void setDataPubblicazione(int dataPubblicazione) {
         this.dataPubblicazione = dataPubblicazione;
     }
 

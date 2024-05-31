@@ -1,18 +1,18 @@
 package lorenzofoschetti.entities;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Archivio {
     List<Catalogo> listaCataloghi;
 
 
     public Archivio(List<Catalogo> listaCataloghi) {
-        this.listaCataloghi = listaCataloghi;
+
+        this.listaCataloghi = new ArrayList<>();
     }
 
-    public static void main(String[] args) {
-
-    }
 
     public List<Catalogo> getListaCataloghi() {
         return listaCataloghi;
@@ -33,4 +33,45 @@ public class Archivio {
     public void aggiungiProdotto(Catalogo catalogo) {
         this.getListaCataloghi().add(catalogo);
     }
+
+    //metodo per rimuovere in base all codice ibsn
+
+    public void rimuoviProdottoIbsn(String ibsn) {
+        if (this.getListaCataloghi().isEmpty()) {
+            System.out.println("Non abbiamo trovato il codice desiderato");
+        } else {
+            List<Catalogo> listaIbsn = this.getListaCataloghi().stream()
+                    .filter(prodotto -> Objects.equals(prodotto.getCodiceibsn(), ibsn))
+                    .toList();
+
+            if (listaIbsn.isEmpty()) {
+                System.out.println("Niente da eliminare");
+            } else {
+
+                listaIbsn.forEach(prodotto -> this.getListaCataloghi().remove(prodotto));
+
+            }
+        }
+    }
+
+    //metodo per ricercare in base al codice ibsn
+    public void ricercaProdttoIbsn(String ibsn) {
+        if (this.getListaCataloghi().isEmpty()) {
+            System.out.println("Non abbiamo trovato il codice desiderato");
+        } else {
+            List<Catalogo> listaIbsn2 = this.getListaCataloghi().stream()
+                    .filter(prodotto -> Objects.equals(prodotto.getCodiceibsn(), ibsn))
+                    .toList();
+
+            if (listaIbsn2.isEmpty()) {
+                System.out.println("Nessun elemento trovato");
+            } else {
+
+                listaIbsn2.forEach(prodotto -> System.out.println(prodotto.getTitolo()));
+            }
+        }
+    }
+
 }
+
+

@@ -1,14 +1,12 @@
 package lorenzofoschetti.entities;
 
-import java.util.Date;
-
 public class Libro extends Catalogo {
     //attributi
     String autore;
     String genere;
 
     //costruttore
-    public Libro(int codiceibsn, String titolo, Date dataPubblicazione, int pagine) {
+    public Libro(String codiceibsn, String titolo, int dataPubblicazione, int pagine) {
         super(codiceibsn, titolo, dataPubblicazione, pagine);
     }
 
