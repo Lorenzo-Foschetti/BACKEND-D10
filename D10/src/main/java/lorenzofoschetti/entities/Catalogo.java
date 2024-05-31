@@ -19,6 +19,7 @@ public abstract class Catalogo {
 
     }
 
+    //getter e setter
     public int getCodiceibsn() {
         return codiceibsn;
     }
